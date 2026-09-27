@@ -4,10 +4,6 @@
   "version": 1,
   "schemaVersion": 2,
   "ownerEmail": "developer@example.com",
-  "inputParameters": ["repo"],
-  "inputTemplate": {
-    "repo": "vercel/next.js"
-  },
   "tasks": [
     {
       "name": "fork_github_calls",
@@ -21,12 +17,8 @@
             "taskReferenceName": "repo_info_ref",
             "type": "HTTP",
             "inputParameters": {
-              "uri": "https://api.github.com/repos/${workflow.input.repo}",
+              "uri": "https://api.github.com/repos/vercel/next.js",
               "method": "GET",
-              "headers": {
-                "Accept": "application/vnd.github.v3+json",
-                "User-Agent": "conductor-workflow"
-              },
               "connectionTimeOut": 5000,
               "readTimeOut": 5000
             }
@@ -39,12 +31,8 @@
             "type": "HTTP",
             "optional": true,
             "inputParameters": {
-              "uri": "https://api.github.com/repos/${workflow.input.repo}/releases/latest",
+              "uri": "https://api.github.com/repos/vercel/next.js/releases/latest",
               "method": "GET",
-              "headers": {
-                "Accept": "application/vnd.github.v3+json",
-                "User-Agent": "conductor-workflow"
-              },
               "connectionTimeOut": 5000,
               "readTimeOut": 5000
             }
@@ -56,12 +44,8 @@
             "taskReferenceName": "contributors_ref",
             "type": "HTTP",
             "inputParameters": {
-              "uri": "https://api.github.com/repos/${workflow.input.repo}/contributors?per_page=5",
+              "uri": "https://api.github.com/repos/vercel/next.js/contributors?per_page=5",
               "method": "GET",
-              "headers": {
-                "Accept": "application/vnd.github.v3+json",
-                "User-Agent": "conductor-workflow"
-              },
               "connectionTimeOut": 5000,
               "readTimeOut": 5000
             }
@@ -73,12 +57,8 @@
             "taskReferenceName": "recent_commits_ref",
             "type": "HTTP",
             "inputParameters": {
-              "uri": "https://api.github.com/repos/${workflow.input.repo}/commits?per_page=5",
+              "uri": "https://api.github.com/repos/vercel/next.js/commits?per_page=5",
               "method": "GET",
-              "headers": {
-                "Accept": "application/vnd.github.v3+json",
-                "User-Agent": "conductor-workflow"
-              },
               "connectionTimeOut": 5000,
               "readTimeOut": 5000
             }
